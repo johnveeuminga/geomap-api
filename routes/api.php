@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Accident Routes
+// 
+Route::get('/accidents', 'AccidentsController@index');
+Route::get('accident/{id}', 'AccidentsController@show');
+Route::post('accident', 'AccidentsController@store');
+Route::put('accident/{id}', 'AccidentsController@store');
+Route::delete('accident/{id}', 'AccidentsController@destroy');

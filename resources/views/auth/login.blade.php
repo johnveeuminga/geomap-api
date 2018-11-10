@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+@section('title ', 'API | Login')
+
 @section('content')
 <section id="wrapper">
-  <div class="login-register" style="background-image:url({{ asset('images/login-register.jpg') }});">
+  {{-- <div class="login-register" style="background-image:url({{ asset('images/login-register.jpg') }});"> --}}
+  <div class="login-register" style="background-color: rgb(4, 114, 140)">
     <div class="login-box card">
         <div class="card-body">
             <form class="form-horizontal form-material" id="loginform" action="{{ route('login') }}" method="POST">

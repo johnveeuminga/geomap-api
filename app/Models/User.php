@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Accidents;
+use App\Models\Accident;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,7 +50,7 @@ class User extends Authenticatable
     public function accidents()
     {
 
-        return $this->hasMany(Accidents::class);
+        return $this->hasMany(Accident::class);
         
     }
 }

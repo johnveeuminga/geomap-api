@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Accidents;
+use App\Models\Accident;
 
 class AccidentPhotos extends Model
 {
@@ -16,7 +16,7 @@ class AccidentPhotos extends Model
      */
     public function accident()
     {
-        return $this->belongsTo(Accidents::class);
+        return $this->belongsTo(Accident::class);
         
     }
 }

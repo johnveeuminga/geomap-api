@@ -9247,7 +9247,7 @@ File: scss
 
 .page-wrapper {
   background: #eef5f9;
-  padding-bottom: 60px;
+  padding:10px 12px;
 }
 
 .container-fluid {
