@@ -1,4 +1,4 @@
-{{-- <div class="page-titles">  --}}
+{{-- <div class="page-titles">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 align-self-center">
@@ -10,4 +10,4 @@
             </div>
         </div>
     </div>
-{{-- </div> --}}
+ </div> --}}

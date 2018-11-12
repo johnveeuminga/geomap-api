@@ -16,12 +16,19 @@
       <!-- Sidebar navigation-->
       <nav class="sidebar-nav">
           <ul id="sidebarnav">
-              <li class="nav-small-cap">PERSONAL</li>
-              <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Accidents </span></a>
-                  <ul aria-expanded="false" class="collapse">
+              <li class="nav-small-cap">MENU</li>
+              <li><a class="waves-effect waves-dark" href="{{ route('home') }}"><i class="mdi mdi-home"></i>Home</a></li>
+              <li><a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Accidents </span></a>
+                  <ul aria-expanded="false" class="collapse" style="border-left:2px solid #4AC1E8;margin-left:10px">
                       <li><a href="{{ route('accidents.index') }}">View Accidents</a></li>
                   </ul>
-            </li>
+              </li>
+            {{--   <li class="nav-small-cap">USER  MANAGEMENT</li>
+              <li><a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-users"></i><span class="hide-menu">User </span></a>
+                  <ul aria-expanded="false" class="collapse" style="border-left:2px solid #4AC1E8;margin-left:10px">
+                      <li><a href="{{ route('accidents.index') }}">Add new</a></li>
+                  </ul>
+              </li> --}}
           </ul>
       </nav>
       <!-- End Sidebar navigation -->

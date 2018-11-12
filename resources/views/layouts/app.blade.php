@@ -18,11 +18,10 @@
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/spinners.css') }}" rel="stylesheet">
-    {{-- <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">  --}}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-    
       <header class="topbar">
         @include('partials.navbar')
       </header>

@@ -4,18 +4,15 @@
   <!-- ============================================================== -->
   <div class="navbar-header">
       <a class="navbar-brand" href="{{ route('home') }}">
-          <!-- Logo icon --><b>
+          <!-- Logo icon -->
+          <b>
+            <h3 class="light-logo">Geomap <small style="border:none; padding:10px;border-right: 3px inset rgb(4, 114, 140);border-bottom: 3px outset rgb(4, 114, 140);">API</small></h3>
               <!-- Dark Logo icon -->
-              <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+              {{-- <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" /> --}}
               <!-- Light Logo icon -->
-              <img src="{{ asset('images/logo-light-icon.png') }} " alt="homepage" class="light-logo" />
+              {{-- <img src="{{ asset('images/logo-light-icon.png') }} " alt="homepage" class="light-logo" /> --}}
           </b>
-          <!--End Logo icon -->
-          <!-- Logo text --><span>
-           <!-- dark Logo text -->
-           <img src="{{ asset('images/logo-text.png') }}" alt="homepage" class="dark-logo" />
-           <!-- Light Logo text -->    
-           <img src="{{ asset( 'images/logo-light-text.png' ) }}" class="light-logo" alt="homepage" /></span> </a>
+      </a>
   </div>
   <!-- ============================================================== -->
   <!-- End Logo -->
@@ -26,13 +23,13 @@
       <!-- ============================================================== -->
       <!-- User profile and search -->
       <!-- ============================================================== -->
-      <ul class="navbar-nav my-lg-0 ml-auto">
+      {{-- <ul class="navbar-nav my-lg-0 ml-auto">
           <!-- ============================================================== -->
           <!-- Profile -->
           <!-- ============================================================== -->
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
-              <div class="dropdown-menu dropdown-menu-right scale-up show">
+              <div class="dropdown-menu dropdown-menu-right scale-up">
                   <ul class="dropdown-user">
                       <li>
                           <div class="dw-user-box">
@@ -47,7 +44,7 @@
                   </ul>
               </div>
           </li>
-        </ul>
+        </ul> --}}
     </div>
   @else
    
