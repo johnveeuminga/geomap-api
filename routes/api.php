@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Accident Routes
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/accidents', 'AccidentsController@index');
-Route::get('accident/{id}', 'AccidentsController@show');
-Route::post('accident', 'AccidentsController@store');
-Route::put('accident', 'AccidentsController@store');
-Route::delete('accident/{id}', 'AccidentsController@destroy');
+Route::get('/accident/{id}', 'AccidentsController@show');
+Route::post('/accident', 'AccidentsController@store');
+Route::put('/accident', 'AccidentsController@store');
+Route::delete('/accident/{id}', 'AccidentsController@destroy');

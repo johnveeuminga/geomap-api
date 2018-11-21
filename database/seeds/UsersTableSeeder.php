@@ -21,6 +21,14 @@ class UsersTableSeeder extends Seeder
             'name'      => 'Admin',
         ]);
 
+        // Test custom user credentials
+        User::create([
+          'email'  => 'test@email.com',
+          'username'  => 'test',
+          'password'  => bcrypt('secret'),
+          'name'      => 'Test Customer',
+        ]);
+
         factory(App\Models\User::class, 10)->create();
     }
 }
