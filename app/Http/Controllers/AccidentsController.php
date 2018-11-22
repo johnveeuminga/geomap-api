@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Accident;
 use App\Http\Resources\Accident as AccidentResource;
+use Carbon\Carbon;
 
 class AccidentsController extends Controller
 {
@@ -34,6 +35,8 @@ class AccidentsController extends Controller
            $accident->description = $request->description;
            $accident->lat = $request->lat;
            $accident->lng = $request->lng;
+           $accident->created_at = $request->date ? Carbon::parse($request->date) : Carbon::now();
+           
 
            if ($accident->save()) {
                return new AccidentResource($accident);

@@ -21,6 +21,7 @@ class CreateAccidentsTable extends Migration
             $table->decimal('lat', 10, 7);
             $table->decimal('lng', 10, 7);
             $table->dateTimeTz('time')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
