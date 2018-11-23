@@ -6,14 +6,12 @@
       <a class="navbar-brand" href="{{ route('home') }}">
           <!-- Logo icon -->
           <b>
-            <h3 class="light-logo">Geomap <small style="border:none; padding:10px;border-right: 3px inset rgb(4, 114, 140);border-bottom: 3px outset rgb(4, 114, 140);">API</small></h3>
-              <!-- Dark Logo icon -->
-              {{-- <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo" /> --}}
-              <!-- Light Logo icon -->
-              {{-- <img src="{{ asset('images/logo-light-icon.png') }} " alt="homepage" class="light-logo" /> --}}
+            <h4 class="light-logo">Geomap <small> API</small></h4>
+            
           </b>
       </a>
   </div>
+
   <!-- ============================================================== -->
   <!-- End Logo -->
   <!-- ============================================================== -->
@@ -54,10 +52,10 @@
         <!-- Profile -->
         <!-- ============================================================== -->
         <li class="nav-item">
-            <a href="{{ url('login') }}" class="nav-link text-muted waves-effect waves-dark"> Login</a>
+            <a href="{{ url('login') }}" class="nav-link text-muted waves-effect waves-dark" style="font-size: 15px"> Login</a>
         </li>
         <li class="nav-item">
-            <a href="{{ url('register')}}" class="nav-link text-muted waves-effect waves-dark">Register</a>
+            <a href="{{ url('register')}}" class="nav-link text-muted waves-effect waves-dark" style="font-size: 15px">Register</a>
         </li>
        
     </ul>
