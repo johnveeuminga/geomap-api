@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Accident;
+use App\Models\AccidentPhotos;
 use App\Http\Resources\Accident as AccidentResource;
 use Carbon\Carbon;
+use Image;
 
 class AccidentsController extends Controller
 {
@@ -30,49 +32,31 @@ class AccidentsController extends Controller
     public function store(Request $request){
            $accident = $request->isMethod('put') ? Accident::findOrFail($request->id) : new Accident;      // Check if PUT OR POST
 
-           $accident->user_id = 1;
+           $accident->user_id = 1;                                                                         // Change upon deployment
            $accident->name = $request->name;
            $accident->description = $request->description;
            $accident->lat = $request->lat;
            $accident->lng = $request->lng;
+
+           if ($request->hasFile('accident_image')) {
+               $image = $request->file('accident_image');
+               $fileName = time() . "." . $image->getClientOriginalExtension();
+               $location = public_path('uploads/accidents/' . $fileName);
+               Image::make($image)->resize(1000, 1200)->save($location);
+               // Saving Single Image
+               $newImage = new AccidentPhotos;
+               $newImage->accident_id = $accident->id;
+               $newImage->mime = $request->mime;
+               $newImage->filename = $fileName;
+               $newImage->save();
+           }
            $accident->created_at = $request->date ? Carbon::parse($request->date) : Carbon::now();
            
 
            if ($accident->save()) {
                return new AccidentResource($accident);
            }
-            // if ($request->isMethod('POST')) {
-            //     $accident = new Accident;
-
-            //     $accident->user_id = 1;
-            //     $accident->name = $request->name;
-            //     $accident->description = $request->description;
-            //     $accident->lng = $request->lng;
-            //     $accident->lat = $request->lat;
-            //     $accident->save();
-            //     return new AccidentResource($accident);
-            //     // dd($request->all());
-            // }else if($request->isMethod('PUT')){
-            //     $accident = Accident::findOrFail($request->id);
-            //     dd($accident);
-            // }else{
-            //     return json('Error');
-            // }
-       // if (request()->wantsJson()) {
-           // $accident = $request->isMethod('put') ? Accident::findOrFail($request->id) : new Accident;      // Check if PUT OR POST
-
-           // $accident->user_id = auth()->user()->id;
-           // $accident->name = "asfasf";
-           // $accident->description = $request->description;
-           // $accident->lat = $request->lat;
-           // $accident->lng = $request->lng;
-
-           // if ($accident->save()) {
-           //     return new AccidentResource($accident);
-           // }
-       // }else{
-
-       // }
+           
     }
 
     public function show($id){
