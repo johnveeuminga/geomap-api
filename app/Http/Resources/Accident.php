@@ -14,11 +14,18 @@ class Accident extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
-        // return [
-        //     'id' => $this->id,
-        //     'username' => $this->username,
-        //     'description' => $this->description
-        // ];
+
+        // return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
+            'description' => $this->description,
+            'user_id' => $this->user_id,
+            'status'  => $this->status,
+            'created_at'  => $this->created_at,
+            'updated_at'  => $this->updated_at,
+            'images'  => AccidentPhotosResource::collection(($this->photos)),
+        ];
     }
 }
