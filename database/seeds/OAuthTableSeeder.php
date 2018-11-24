@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Laravel\Passport\Client;
 
 class OAuthTableSeeder extends Seeder
 {
@@ -12,16 +13,33 @@ class OAuthTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $default_password_token = 'Dih8amxaga3rtCHHkf9YKiQQaW4ZaRG7';
+        // Default Password Client
+        $default_password_token = 'Du705fh5wqV0SSoIGOHKJSEECEViTJOpjdB6sXhJ';
 
-        DB::table('oauth_clients')->insert([
-            'name'      => 'Safetravel API Password Grant Client',
-            'secret'    => 'Du705fh5wqV0SSoIGOHKJSEECEViTJOpjdB6sXhJ',
-            'redirect'  => 'http://localhost',
-            'personal_access_client' => 0,
-            'password_client'   => 1,
-            'revoked'   => 0,
-        ]);
-    }
+        // Social Password Grant
+        $social_password_grant = 'mmE6hkkHC07y4QGRD61KutbmYHhQGL1PiTpRMXeX';
+
+        $client = new Client;
+
+        $client->name = 'Safetravel API Password Grant Client';
+        $client->secret = $default_password_token;
+        $client->redirect  = 'http://localhost';
+        $client->password_client = 1;
+        $client->personal_access_client = 0;
+        $client->revoked = 0;
+
+        $client->save();
+
+        // Default Social Access Grant
+        $client = new Client;
+
+        $client->name = 'Social Access Grant Client';
+        $client->secret = $social_password_grant;
+        $client->redirect  = 'http://localhost';
+        $client->password_client = 0;
+        $client->personal_access_client = 0;
+        $client->revoked = 0;
+
+        $client->save();
+    }   
 }

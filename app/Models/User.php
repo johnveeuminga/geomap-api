@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'image_url'
     ];
 
     /**
@@ -54,10 +54,8 @@ class User extends Authenticatable
         
     }
 
-    public function findForPassport($username)
+    public function linkedSocialAccounts()
     {
-
-        return $this->where('username', $username)->first();
-        
+        return $this->hasMany(LinkedSocialAccount::class);
     }
 }
