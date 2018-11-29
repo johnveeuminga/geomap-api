@@ -14,6 +14,11 @@ class Accident extends JsonResource
      */
     public function toArray($request)
     {
+        $images = [];
+
+        foreach($this->getMedia('images') as $image) {
+          $images[] = $image->getFullUrl();
+        }
 
         // return parent::toArray($request);
         return [
@@ -25,7 +30,7 @@ class Accident extends JsonResource
             'status'  => $this->status,
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,
-            'images'  => AccidentPhotosResource::collection(($this->photos)),
+            'images'  => $images,
         ];
     }
 }

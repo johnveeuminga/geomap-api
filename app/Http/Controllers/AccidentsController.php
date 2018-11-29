@@ -39,19 +39,19 @@ class AccidentsController extends Controller
            $accident->lng = $request->lng;
            $accident->save();
 
-           if($request->images) {
-             foreach($request->images as $image) {
-              $fileName = time() . ".jpg";
-              $location = public_path('uploads/accidents/' . $fileName);
-              Image::make($image['uri'])->save($location);
-              // Saving Single Image
-              $newImage = new AccidentPhotos;
-              $newImage->accident_id = $accident->id;
-              $newImage->mime = 'jpg';
-              $newImage->filename = $fileName;
-              $newImage->save();
-             }
-           }
+          //  if($request->images) {
+          //    foreach($request->images as $image) {
+          //     $fileName = time() . ".jpg";
+          //     $location = public_path('uploads/accidents/' . $fileName);
+          //     Image::make($image['uri'])->save($location);
+          //     // Saving Single Image
+          //     $newImage = new AccidentPhotos;
+          //     $newImage->accident_id = $accident->id;
+          //     $newImage->mime = 'jpg';
+          //     $newImage->filename = $fileName;
+          //     $newImage->save();
+          //    }
+          //  }
 
            $accident->created_at = $request->date ? Carbon::parse($request->date) : Carbon::now();
            
@@ -72,6 +72,7 @@ class AccidentsController extends Controller
         }
 
     }
+
     public function destroy($id){
         if (request()->wantsJson()) {                                                                   // check if it is an API call
             $accident = Accident::findOrFail($id);                                                      // pass it as a resource
@@ -79,6 +80,14 @@ class AccidentsController extends Controller
                 return new AccidentResource($accident);                                                 // Return the DELETED asJSON    
             }                                                        
         }
+    }
+
+    public function upload_image($id, Request $request) {
+      $accident = Accident::findOrFail($id);
+
+      $accident->addMedia($request->file('accident_photo'))->usingFileName(time() . '_' . str_random('16') . '.jpg')->toMediaCollection('images');
+
+      return $request->wantsJson() ? new AccidentResource($accident) : $accident;
     }
 
 }

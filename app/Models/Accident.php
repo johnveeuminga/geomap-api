@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\AccidentPhotos;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 
-class Accident extends Model
+class Accident extends Model implements HasMedia
 {
-  //
+  use HasMediaTrait;
 
   /**
    * The user who reported the accident
