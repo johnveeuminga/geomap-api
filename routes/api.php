@@ -25,3 +25,6 @@ Route::post('/accident', 'AccidentsController@store');
 Route::put('/accident', 'AccidentsController@store');
 Route::delete('/accident/{id}', 'AccidentsController@destroy');
 Route::post('/accident/{id}/photos', 'AccidentsController@upload_image');
+
+// User Edit
+Route::put('/user/update/{id}', 'ProfileController@update');
