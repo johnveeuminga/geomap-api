@@ -28,3 +28,7 @@ Route::post('/accident/{id}/photos', 'AccidentsController@upload_image');
 
 // User Edit
 Route::put('/user/update/{id}', 'ProfileController@update');
+
+// Auth 
+Route::post('/register', 'Api\AuthController@register');
+Route::post('/login', 'Api\AuthController@login');
