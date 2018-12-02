@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/accidents', 'AccidentsController@index')->name('accidents.index');
 Route::get('/accident/{id}', 'AccidentsController@show')->name('accident.show');
+Route::get('/user/{username}', 'ProfileController@profile')->name('profile');
+Route::post('/user/upload', 'ProfileController@upload_avatar')->name('upload-avatar');
+Route::PUT('/user/update/{id}', 'ProfileController@update')->name('user-update');

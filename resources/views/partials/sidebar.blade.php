@@ -2,14 +2,23 @@
   <!-- Sidebar scroll-->
   <div class="scroll-sidebar">
       <!-- User profile -->
-      <div class="user-profile" style="background: url({{asset('images/background/user-info.jpg')}}) no-repeat;">
+      <div class="user-profile" style="background: url({{asset('images/background/dirty_white.jpg')}}) no-repeat;">
           <!-- User profile image -->
-          <div class="profile-img"> <img src="{{ asset('images/users/profile.png') }}" alt="user" /> </div>
+          <div class="profile-img"> <img src="{{ auth()->user()->avatar }}" alt="user" /> </div>
           <!-- User profile text-->
-          <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ auth()->user()->name }}</a>
-              <div class="dropdown-menu animated flipInY"> <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                  <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                  <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>
+          <div class="profile-text"> 
+            <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" id="dropdownLink" role="button" aria-haspopup="true" aria-expanded="true">{{ auth()->user()->name }} <br> <small>{{ auth()->user()->email }}</small></a> 
+
+            <div class="dropdown-menu" aria-labelledby="dropdownLink"> 
+
+              <a href="{{ route('profile', auth()->user()->username) }}" class="dropdown-item"><i class="ti-user"></i> My Profile</a> 
+              <div class="dropdown-divider"></div> 
+              <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();"><i class="ti-settings"></i> Logout</a> 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form> 
+            </div>
           </div>
       </div>
       <!-- End User profile text-->
@@ -23,12 +32,6 @@
                       <li><a href="{{ route('accidents.index') }}">View Accidents</a></li>
                   </ul>
               </li>
-            {{--   <li class="nav-small-cap">USER  MANAGEMENT</li>
-              <li><a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-users"></i><span class="hide-menu">User </span></a>
-                  <ul aria-expanded="false" class="collapse" style="border-left:2px solid #4AC1E8;margin-left:10px">
-                      <li><a href="{{ route('accidents.index') }}">Add new</a></li>
-                  </ul>
-              </li> --}}
           </ul>
       </nav>
       <!-- End Sidebar navigation -->
@@ -36,14 +39,6 @@
   <!-- End Sidebar scroll-->
   <!-- Bottom points-->
   <div class="sidebar-footer">
-      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-      <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-      <!-- item--><a href="{{ route('logout') }}" class="link" data-toggle="tooltip" title="Logout"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a> 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
   </div>
   <!-- End Bottom points-->
 </aside>

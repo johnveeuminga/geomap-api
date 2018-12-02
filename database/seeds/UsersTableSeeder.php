@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             'username'  => 'admin',
             'password'  => bcrypt('password'),
             'name'      => 'Admin',
+            'avatar'      => '/images/users/user-admin.png',
         ]);
 
         // Test custom user credentials
@@ -27,6 +28,8 @@ class UsersTableSeeder extends Seeder
           'username'  => 'test',
           'password'  => bcrypt('secret'),
           'name'      => 'Test Customer',
+          'avatar'      => '/images/users/default_avatar.jpg',
+
         ]);
 
         factory(App\Models\User::class, 10)->create();
