@@ -31,6 +31,10 @@ class Accident extends JsonResource
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,
             'images'  => $images,
+            'state'   => $this->state,
+            'city'   => $this->city,
+            'region'   => $this->region,
+            'street'   => $this->street,
         ];
     }
 }

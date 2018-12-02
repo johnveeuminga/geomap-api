@@ -58,4 +58,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(LinkedSocialAccount::class);
     }
+
+    /**
+     * Either use username of email for Passport authentication
+     */
+    public function findForPassport($username) {
+      return $this->where('username', $username)->first() ?? $this->where('email', $username)->first();
+    }
 }

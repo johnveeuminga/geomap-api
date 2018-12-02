@@ -23,6 +23,10 @@ class CreateAccidentsTable extends Migration
             $table->dateTimeTz('time')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
+            $table->string('city')->nullable();
+            $table->string('region')->nullable();
+            $table->string('street')->nullable();
+            $table->string('state')->nullable();
         });
     }
 
