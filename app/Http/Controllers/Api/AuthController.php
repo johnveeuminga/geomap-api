@@ -26,16 +26,16 @@ class AuthController extends Controller
 
     	$http = new Client;
 
-    	$response = $http->post(url('oauth/token'), [
-    		'form_params' => [
-    			'grant_type' => 'password',
-    			'client_id' => // id ,
-    			'client_secret' => // client secret,
-    			'username' => $r->email,
-    			'password' => $r->password,
-    			'scope' => ''
-    		]
-    	]);
+    	// $response = $http->post(url('oauth/token'), [
+    	// 	'form_params' => [
+    	// 		'grant_type' => 'password',
+    	// 		'client_id' => // id ,
+    	// 		'client_secret' => // client secret,
+    	// 		'username' => $r->email,
+    	// 		'password' => $r->password,
+    	// 		'scope' => ''
+    	// 	]
+    	// ]);
     	return response(['data' => json_decode((string) $response->getBody(), true) ]);
     }
 
@@ -53,16 +53,16 @@ class AuthController extends Controller
     	if (Hash::check($r->password, $user->password)) {
     		$http = new Client;
 
-    		$response = $http->post(url('oauth/token'), [
-    			'form_params' => [
-    				'grant_type' => 'password',
-    				'client_id' => // client id,
-    				'client_secret' => // client secret,
-    				'username' => $r->email,
-    				'password' => $r->password,
-    				'scope' => ''
-    			]
-    		]);
+    		// $response = $http->post(url('oauth/token'), [
+    		// 	'form_params' => [
+    		// 		'grant_type' => 'password',
+    		// 		'client_id' => // client id,
+    		// 		'client_secret' => // client secret,
+    		// 		'username' => $r->email,
+    		// 		'password' => $r->password,
+    		// 		'scope' => ''
+    		// 	]
+    		// ]);
     		return response(['data' => json_decode((string) $response->getBody(), true) ]);
     	}
     }

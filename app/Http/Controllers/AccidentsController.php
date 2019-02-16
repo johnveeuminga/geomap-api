@@ -13,9 +13,7 @@ use Image;
 class AccidentsController extends Controller
 {
     public function __construct() {
-        if (request()->wantsJson()) {
-            $this->middleware('api');
-        }else{
+        if (!request()->wantsJson()) {
             $this->middleware('auth');
         }
     }
