@@ -12,11 +12,11 @@ use Image;
 
 class AccidentsController extends Controller
 {
-    public function __construct() {
-        if (!request()->wantsJson()) {
-            $this->middleware('auth');
-        }
-    }
+    // public function __construct() {
+    //     if (!request()->wantsJson()) {
+    //         $this->middleware('auth');
+    //     }
+    // }
     public function index()
     {
         if (request()->wantsJson()) {
